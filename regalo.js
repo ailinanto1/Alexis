@@ -200,19 +200,13 @@ objetivos.forEach((texto, index) => {
 
 
 /*Playlist*/
-/* tipos soportados:
-  - { type: 'youtube', id: 'VIDEO_ID', title: '...' }
-  - { type: 'spotify', id: 'SPOTIFY_TRACK_OR_PLAYLIST_ID', title: '...' }
-*/
 const PLAYLIST_KEY = 'playlistIndex';
 
 const tracks = [
-  // Reemplazá por sus canciones ❤️
-  { type: 'youtube', id: 'kXYiU_JCYtU', title: 'Nuestra canción (YouTube #1)' },
-  { type: 'spotify', id: '1fU2DcwVJEuUvGV3mUam8T', title: 'Tema especial (Spotify track)' },
-  { type: 'youtube', id: 'dQw4w9WgXcQ', title: 'Recuerdo de viaje (YouTube #2)' },
-  // También podés usar una playlist de Spotify:
-  // { type: 'spotify', id: '37i9dQZF1DXcBWIGoYBM5M', title: 'Nuestra Playlist (Spotify playlist)' },
+  { type: 'spotify', id: '/6l0ClSGxF3VwZIvxseYERY', title: 'Nuestras canciones' },
+  { type: 'spotify', id: '4u5xLMRN0dgKBFFN8FiNgv', title: 'Nuestras canciones' },
+  { type: 'spotify', id: '2L2o3dwHpLIVtpCDy1uBD4', title: 'Nuestras canciones' },
+  { type: 'spotify', id: '3ydweVPwq9PCEVJ8WwqT6u', title: 'Nuestras canciones' },
 ];
 
 const embed = document.getElementById('playlist-embed');
@@ -224,7 +218,6 @@ if (current < 0 || current >= tracks.length) current = 0;
 
 function urlFor(t) {
   if (t.type === 'youtube') return `https://www.youtube.com/embed/${t.id}?rel=0`;
-  // Nota: para playlist de Spotify usar /embed/playlist/ID – para track usar /embed/track/ID
   const kind = t.id.length > 30 ? 'playlist' : 'track';
   return `https://open.spotify.com/embed/${kind}/${t.id}`;
 }
@@ -260,146 +253,3 @@ document.getElementById('pl-next').addEventListener('click', () => {
 
 buildPills();
 renderTrack(current);
-
-
-
-/*Juego de pareja*/
-const QUIZ_KEY = 'quizUltimoScore';
-
-// Editá las respuestas correctas para que coincidan con tu novio
-const preguntas = [
-  {
-    q: "¿Su color favorito?",
-    opciones: ["Rojo", "Azul", "Verde", "Negro"],
-    correcta: "Azul",
-  },
-  {
-    q: "¿Comida que más le gusta?",
-    opciones: ["Pizza", "Hamburguesa", "Sushi", "Pasta"],
-    correcta: "Pizza",
-  },
-  {
-    q: "¿Mate, café o té?",
-    opciones: ["Mate", "Café", "Té"],
-    correcta: "Mate",
-  },
-  {
-    q: "Plan perfecto de finde:",
-    opciones: ["Película y helado", "Salir a caminar", "Juntada con amigos", "Dormir"],
-    correcta: "Película y helado",
-  },
-  {
-    q: "¿A qué hora suele dormirse?",
-    opciones: ["Antes de las 23", "Entre 23 y 1", "Después de la 1"],
-    correcta: "Entre 23 y 1",
-  },
-  {
-    q: "¿Qué música escucha más?",
-    opciones: ["Pop", "Rock", "Reggaeton", "Indie"],
-    correcta: "Rock",
-  },
-  {
-    q: "¿Dulce o salado?",
-    opciones: ["Dulce", "Salado"],
-    correcta: "Dulce",
-  },
-  {
-    q: "¿Red social que usa más?",
-    opciones: ["Instagram", "TikTok", "YouTube", "X/Twitter"],
-    correcta: "Instagram",
-  },
-];
-
-const quizEl = document.getElementById('quiz-container');
-const progressEl = document.getElementById('quiz-progress');
-const prevBtn = document.getElementById('quiz-prev');
-const nextBtn = document.getElementById('quiz-next');
-const resultEl = document.getElementById('quiz-result');
-const cardEl = document.querySelector('.quiz-card');
-
-let step = 0;
-let selecciones = Array(preguntas.length).fill(null);
-
-function buildProgress() {
-  progressEl.innerHTML = '';
-  preguntas.forEach((_, i) => {
-    const d = document.createElement('div');
-    d.className = 'quiz-dot' + (i === step ? ' active' : '');
-    progressEl.appendChild(d);
-  });
-}
-
-function renderPregunta() {
-  buildProgress();
-
-  const p = preguntas[step];
-  quizEl.innerHTML = `
-    <div class="quiz-question">${p.q}</div>
-    <div class="quiz-options">
-      ${p.opciones.map(op => `
-        <button class="quiz-option ${selecciones[step] === op ? 'selected' : ''}" data-opcion="${op}">
-          ${op}
-        </button>`).join('')}
-    </div>
-  `;
-
-  // listeners de opción
-  quizEl.querySelectorAll('.quiz-option').forEach(btn => {
-    btn.addEventListener('click', () => {
-      selecciones[step] = btn.dataset.opcion;
-      quizEl.querySelectorAll('.quiz-option').forEach(b => b.classList.remove('selected'));
-      btn.classList.add('selected');
-      nextBtn.disabled = false;
-    });
-  });
-
-  prevBtn.disabled = step === 0;
-  nextBtn.textContent = step === preguntas.length - 1 ? 'Finalizar' : 'Siguiente';
-  nextBtn.disabled = selecciones[step] === null;
-  resultEl.classList.add('hidden');
-}
-
-function puntuar() {
-  let score = 0;
-  preguntas.forEach((p, i) => {
-    if (selecciones[i] === p.correcta) score++;
-  });
-  localStorage.setItem(QUIZ_KEY, String(score));
-
-  const porcentaje = Math.round((score / preguntas.length) * 100);
-  const msg = porcentaje >= 80 ? "¡Son un match perfecto! 💖"
-    : porcentaje >= 50 ? "¡Muy bien! Se conocen bastante 😊"
-      : "¡A seguir sumando momentos juntos! 💫";
-
-  resultEl.innerHTML = `Resultado: <strong>${score}/${preguntas.length}</strong> – ${msg}`;
-  resultEl.classList.remove('hidden');
-
-  // corazones
-  for (let i = 0; i < 12; i++) {
-    const h = document.createElement('div');
-    h.className = 'heart';
-    h.textContent = '❤';
-    h.style.left = (20 + Math.random() * 60) + '%';
-    h.style.bottom = '10px';
-    h.style.animationDelay = (Math.random() * 0.4) + 's';
-    cardEl.appendChild(h);
-    setTimeout(() => h.remove(), 2200);
-  }
-}
-
-prevBtn.addEventListener('click', () => {
-  if (step > 0) { step--; renderPregunta(); }
-});
-nextBtn.addEventListener('click', () => {
-  if (step < preguntas.length - 1) {
-    step++; renderPregunta();
-  } else {
-    puntuar();
-  }
-});
-
-// si querés mostrar el último score guardado al cargar, descomentá:
-// const last = localStorage.getItem(QUIZ_KEY);
-// if (last !== null) { resultEl.textContent = `Último resultado: ${last}/${preguntas.length}`; resultEl.classList.remove('hidden'); }
-
-renderPregunta();

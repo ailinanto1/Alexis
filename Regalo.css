@@ -394,11 +394,13 @@ button:hover {
 
 .playlist-embed {
     width: 100%;
-    aspect-ratio: 16 / 9;
-    /* responsive */
+    height: 352px;
     border-radius: 12px;
     overflow: hidden;
     background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .playlist-embed iframe {
@@ -408,11 +410,12 @@ button:hover {
 }
 
 .playlist-controls {
-    margin-top: 14px;
+    margin-top: 18px;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 18px;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .playlist-btn {
@@ -422,8 +425,10 @@ button:hover {
     border-radius: 50%;
     width: 40px;
     height: 40px;
-    font-size: 22px;
-    line-height: 40px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
     transition: transform .15s ease;
 }
@@ -435,12 +440,13 @@ button:hover {
 .playlist-title {
     font-weight: 700;
     color: #5c1a38;
+    text-align: center;
+    margin: 0 12px;
 }
 
 .playlist-pills {
     display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
+    gap: 10px;
     justify-content: center;
     margin-top: 12px;
 }
@@ -458,6 +464,7 @@ button:hover {
 
 .playlist-pill:hover {
     transform: translateY(-2px);
+    color: white;
 }
 
 .playlist-pill.active {

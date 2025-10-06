@@ -94,6 +94,20 @@
                 <h3>La mejor salida</h3>
                 <p>Una juntada llena de risas y complicidad</p>
             </div>
+
+            <div class="recuadro">
+                <img src="imagenes/septiembre1.jpeg" alt="Recuerdo 4">
+                <p class="fecha">12/09/2025</p>
+                <h3>Nuestro primer viaje juntos</h3>
+                <p>y los que faltan <3</p>
+            </div>
+
+            <div class="recuadro">
+                <img src="imagenes/Recuerdo11.jpeg" alt="Recuerdo 4">
+                <p class="fecha">20/09/2025</p>
+                <h3>Una salida nocturna</h3>
+                <p>Panchito y papitas <3</p>
+            </div>
         </div>
     </section>
     <section id="meses">
@@ -110,17 +124,16 @@
             <button class="mes-btn" data-mes="junio">Junio</button>
             <button class="mes-btn" data-mes="julio">Julio</button>
             <button class="mes-btn" data-mes="agosto">Agosto</button>
+            <button class="mes-btn" data-mes="Septiembre">Septiembre</button>
         </div>
-
         <p id="descripcion-mes">Mes actual: Noviembre</p>
-
         <div class="galeria-mes" id="galeria-noviembre">
             <div class="card">
                 <img src="imagenes/nov1.jpeg" alt="Recuerdo noviembre 1">
             </div>
             <div class="card">
                 <video controls width="500">
-                    <source src="video_noviembre.mp4" type="video/mp4">
+                    <source src="videos/video_noviembre.mp4" type="video/mp4">
                     Tu navegador no soporta el video.
                 </video>
             </div>
@@ -164,7 +177,7 @@
             </div>
             <div class="card">
                 <video controls width="500">
-                    <source src="videos/video_enero4 .mp4" type="video/mp4">
+                    <source src="videos/video_enero4.mp4" type="video/mp4">
                     Tu navegador no soporta el video.
                 </video>
             </div>
@@ -202,9 +215,6 @@
         </div>
 
         <div class="galeria-mes" id="galeria-junio" style="display:none;">
-            <img src="" alt="Recuerdo junio 1">
-            <img src="" alt="Recuerdo junio 2">
-            <img src="" alt="Recuerdo junio 3">
         </div>
 
         <div class="galeria-mes" id="galeria-julio" style="display:none;">
@@ -216,12 +226,26 @@
         <div class="galeria-mes" id="galeria-agosto" style="display:none;">
             <div class="card"><img src="imagenes/agosto1.jpeg" alt="Recuerdo agosto 1"></div>
             <div class="card"><img src="imagenes/agosto2.jpeg" alt="Recuerdo agosto 2"></div>
+            <div class="card"><img src="imagenes/agosto3.jpeg" alt="Recuerdo agosto 3"></div>
+            <div class="card"><img src="imagenes/agosto4.jpeg" alt="Recuerdo agosto 4"></div>
             <div class="card">
                 <video controls width="500">
                     <source src="videos/video_agosto1.mp4" type="video/mp4">
                     Tu navegador no soporta el video.
                 </video>
             </div>
+            <div class="card">
+                <video controls width="500">
+                    <source src="videos/video_agosto2.mp4" type="video/mp4">
+                    Tu navegador no soporta el video.
+                </video>
+            </div>
+        </div>
+        <div class="galeria-mes" id="galeria-Septiembre" style="display:none;">
+            <div class="card"><img src="imagenes/septiembre1.jpeg" alt="Recuerdo septeimbre 1"></div>
+            <div class="card"><img src="imagenes/septiembre2.jpeg" alt="Recuerdo semptiembre 2"></div>
+            <div class="card"><img src="imagenes/septiembre3.jpeg" alt="Recuerdo semptiembre 3"></div>
+            <div class="card"><img src="imagenes/septiembre4.jpeg" alt="Recuerdo semptiembre 4"></div>
         </div>
     </section>
     <section class="datos-curiosos">
@@ -287,6 +311,21 @@
         <p class="playlist-tip">
             Cada canción que nos recuerda a nosotros
         </p>
+    </section>
+    <section class="test-amor-section" id="test-amor">
+        <h2 class="titulo-seccion">Test de Pareja</h2>
+        <div class="quiz-card">
+            <div class="quiz-progress" id="quiz-progress"></div>
+
+            <div id="quiz-container"></div>
+
+            <div class="quiz-nav">
+                <button class="quiz-btn" id="quiz-prev" disabled>Anterior</button>
+                <button class="quiz-btn" id="quiz-next">Siguiente</button>
+            </div>
+
+            <div class="quiz-result hidden" id="quiz-result"></div>
+        </div>
     </section>
     <script src="regalo.js"></script>
 </body>
