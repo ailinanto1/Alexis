@@ -68,6 +68,31 @@ button span {
 
 
 
+
+/* Animacion */
+.corazon {
+    position: fixed;
+    bottom: 0;
+    font-size: 24px;
+    pointer-events: none;
+    animation: subir 5s linear forwards;
+}
+
+@keyframes subir {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(-100vh);
+        opacity: 0;
+    }
+}
+
+
+
+
 /* Sección Recuerdos */
 .recuerdos {
     background-color: #fff0f5;

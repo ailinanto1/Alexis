@@ -1,3 +1,39 @@
+// Animacion de corazones
+function crearCorazon() {
+  const corazon = document.createElement("div");
+  corazon.classList.add("corazon");
+  corazon.innerHTML = "💗";
+  corazon.style.left = Math.random() * 100 + "vw";
+  corazon.style.animationDuration = Math.random() * 2 + 3 + "s";
+  document.body.appendChild(corazon);
+
+  // Eliminar cada corazón después de 5 segundos
+  setTimeout(() => {
+    corazon.remove();
+  }, 5000);
+}
+
+function mostrarCorazones() {
+  // Crear corazones cada 200ms durante 5 segundos
+  const intervalo = setInterval(crearCorazon, 200);
+
+  // Detener después de 5 segundos
+  setTimeout(() => {
+    clearInterval(intervalo);
+  }, 5000);
+}
+
+// Esperar a que el DOM esté listo
+document.addEventListener("DOMContentLoaded", () => {
+  const boton = document.querySelector("#boton-corazones");
+  if (boton) {
+    boton.addEventListener("click", mostrarCorazones);
+  }
+});
+
+
+
+
 /* Mes a mes */
 const botones = document.querySelectorAll(".mes-btn");
 const galerias = document.querySelectorAll(".galeria-mes");
@@ -5,24 +41,21 @@ const descripcion = document.getElementById("descripcion-mes");
 
 botones.forEach((boton) => {
   boton.addEventListener("click", () => {
-    // Sacar clase active de todos
     botones.forEach((b) => b.classList.remove("active"));
-    // Agregar clase active al botón actual
     boton.classList.add("active");
 
-    // Ocultar todas las galerías
     galerias.forEach((g) => (g.style.display = "none"));
 
-    // Mostrar la galería del mes seleccionado
     const mesSeleccionado = boton.getAttribute("data-mes");
     document.getElementById(`galeria-${mesSeleccionado}`).style.display =
       "flex";
 
-    // Cambiar descripción
     descripcion.textContent = `Mes actual: ${mesSeleccionado.charAt(0).toUpperCase() + mesSeleccionado.slice(1)
       }`;
   });
 });
+
+
 
 /*datos curiosos*/
 const datos = [
@@ -89,8 +122,9 @@ function cambiarDato(direccion) {
   }, 300); // tiempo de la animación
 }
 
+
+
 /*Dias juntos*/
-// Fecha de inicio: 30/11/2024 17:00 (hora local del dispositivo)
 const inicioNoviazgo = new Date(2024, 10, 30, 17, 0, 0); // Mes 10 = Noviembre
 
 const $dias = document.getElementById("dias");
@@ -125,8 +159,9 @@ function actualizarContador() {
 actualizarContador();
 setInterval(actualizarContador, 1000);
 
+
+
 /*Objetivos juntos*/
-// Lista de objetivos
 const objetivos = [
   "Ser novios",
   "Viajar juntos",
@@ -153,7 +188,6 @@ const objetivos = [
 
 const contenedor = document.getElementById("objetivos-container");
 
-// Estado guardado
 let objetivosEstado = JSON.parse(localStorage.getItem("objetivosEstado")) || {};
 
 objetivos.forEach((texto, index) => {
@@ -167,7 +201,6 @@ objetivos.forEach((texto, index) => {
   const estado = document.createElement("div");
   estado.classList.add("estado");
 
-  // Definir estado inicial
   if (objetivosEstado[index]) {
     estado.textContent = "Cumplido";
     estado.classList.add("cumplido");
@@ -176,7 +209,6 @@ objetivos.forEach((texto, index) => {
     estado.classList.add("pendiente");
   }
 
-  // Click para cambiar estado
   card.addEventListener("click", () => {
     objetivosEstado[index] = !objetivosEstado[index];
     localStorage.setItem("objetivosEstado", JSON.stringify(objetivosEstado));
