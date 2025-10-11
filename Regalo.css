@@ -23,7 +23,6 @@ html {
 /* Contenido centrado */
 .contenido {
     background-color: rgba(0, 0, 0, 0.4);
-    /* oscuro semitransparente */
     padding: 2rem;
     border-radius: 15px;
 }
@@ -506,4 +505,71 @@ button:hover {
     color: #777;
     font-style: italic;
     margin-top: 10px;
+}
+
+
+
+/* Ajustes para pantallas pequeñas (celulares) */
+@media (max-width: 768px) {
+
+    body {
+        font-size: 16px;
+        padding: 0 10px;
+    }
+
+    section,
+    div {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    h1,
+    h2,
+    h3 {
+        text-align: center;
+        font-size: 1.8em;
+    }
+
+    .card,
+    .playlist,
+    .curioso,
+    .tiempo {
+        width: 90%;
+        margin: 15px auto;
+        padding: 15px;
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+        border-radius: 15px;
+    }
+
+    button,
+    .boton {
+        width: 90%;
+        font-size: 1em;
+        padding: 10px;
+        margin: 10px auto;
+        display: block;
+    }
+
+    .playlist iframe,
+    .playlist img {
+        width: 100%;
+        height: auto;
+    }
+
+    p {
+        text-align: center;
+        line-height: 1.5;
+    }
+
+    .section-title {
+        margin-top: 25px;
+    }
+
+    .contenedor {
+        padding: 0 10px;
+    }
 }
