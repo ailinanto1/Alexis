@@ -70,7 +70,7 @@ const datos = [
   "No puede vivir sin la aquarius de pera",
   "Su banda favorita es Las pastillas Del Abuelo",
   "Es la persona mas fuerte que conozco",
-  "Los géneros favoritos de peliculas son la commedia y el terror",
+  "Los géneros favoritos de peliculas son la comedia y el terror",
   "Es muy gracioso",
   "La paciencia no es una virtud",
   "No se levanta con la primera alarma",
@@ -140,7 +140,6 @@ function actualizarContador() {
   const ahora = new Date();
   let diffMs = ahora - inicioNoviazgo;
 
-  // Por si alguien abre la página antes de la fecha (evita negativos)
   if (diffMs < 0) diffMs = 0;
 
   const totalSeg = Math.floor(diffMs / 1000);
@@ -158,6 +157,36 @@ function actualizarContador() {
 // Arranca y actualiza cada segundo
 actualizarContador();
 setInterval(actualizarContador, 1000);
+
+
+
+/* Cartas de amor */
+document.addEventListener("DOMContentLoaded", () => {
+  const cartas = document.querySelectorAll(".carta-romantica");
+
+  // Sonidos
+  const sonidoAbrir = new Audio("https://cdn.pixabay.com/download/audio/2023/03/07/audio_37cf2e1a4c.mp3?filename=paper-open.mp3");
+  const sonidoCerrar = new Audio("https://cdn.pixabay.com/download/audio/2022/10/16/audio_3b1f7a46e1.mp3?filename=page-flip-1.mp3");
+
+  cartas.forEach(carta => {
+    const esquina = carta.querySelector(".esquina");
+    const cerrada = carta.querySelector(".carta-cerrada");
+
+    cerrada.addEventListener("click", () => {
+      carta.classList.add("abierta");
+      sonidoAbrir.currentTime = 0;
+      sonidoAbrir.play();
+    });
+
+    esquina.addEventListener("click", (e) => {
+      e.stopPropagation();
+      carta.classList.remove("abierta");
+      sonidoCerrar.currentTime = 0;
+      sonidoCerrar.play();
+    });
+  });
+});
+
 
 
 
@@ -285,3 +314,87 @@ document.getElementById('pl-next').addEventListener('click', () => {
 
 buildPills();
 renderTrack(current);
+
+
+
+/* Señor pinguino */
+const mensajes = [
+  "Eres mi persona favorita",
+  "Pingüino dice: te amo mucho",
+  "Tu amor me derrite más que el sol",
+  "Estar contigo es mi lugar feliz",
+  "Te amo cara de confite",
+  "Tus abrazos me dan paz",
+  "Siempre serás mi pingüino",
+  "Gracias por existir en mi vida"
+];
+
+let puedeAparecer = true;
+
+// Crea un pingüino en una posición aleatoria
+function crearPinguino() {
+  if (!puedeAparecer) return;
+
+  puedeAparecer = false;
+
+  const pinguino = document.createElement("img");
+  pinguino.src = "imagenes/pinguinos.png";
+  pinguino.alt = "Pingüino";
+  pinguino.classList.add("pinguino");
+
+  // Posición aleatoria en pantalla
+  const x = Math.random() * (window.innerWidth - 80);
+  const y = Math.random() * (window.innerHeight - 80);
+  pinguino.style.left = `${x}px`;
+  pinguino.style.top = `${y}px`;
+
+  document.body.appendChild(pinguino);
+
+  // Efecto de aparición
+  setTimeout(() => {
+    pinguino.classList.add("visible");
+  }, 100);
+
+  // Click → muestra carta
+  pinguino.addEventListener("click", () => mostrarCarta(pinguino));
+}
+
+// Muestra la carta con mensaje
+function mostrarCarta(pinguino) {
+  const carta = document.createElement("div");
+  carta.classList.add("carta");
+
+  const mensaje = mensajes[Math.floor(Math.random() * mensajes.length)];
+  carta.innerHTML = `
+    <p>${mensaje}</p>
+    <button class="cerrar">Cerrar 💌</button>
+  `;
+
+  carta.style.left = `${pinguino.offsetLeft}px`;
+  carta.style.top = `${pinguino.offsetTop - 90}px`;
+
+  document.body.appendChild(carta);
+
+  // Animación de entrada
+  setTimeout(() => {
+    carta.classList.add("visible");
+  }, 100);
+
+  // Cerrar carta
+  carta.querySelector(".cerrar").addEventListener("click", () => {
+    carta.classList.remove("visible");
+    pinguino.classList.remove("visible");
+    setTimeout(() => {
+      carta.remove();
+      pinguino.remove();
+      // Reaparece otro pingüino después de 90 segundos
+      setTimeout(() => {
+        puedeAparecer = true;
+        crearPinguino();
+      }, 90000);
+    }, 800); // tiempo para animación suave
+  });
+}
+
+// Aparece el primer pingüino
+setTimeout(crearPinguino, 3000);

@@ -1,3 +1,7 @@
+body {
+    background-color: #fff0f5;
+}
+
 /* Fondo de pantalla completa con imagen */
 body,
 html {
@@ -20,32 +24,27 @@ html {
     text-align: center;
 }
 
-/* Contenido centrado */
 .contenido {
     background-color: rgba(0, 0, 0, 0.4);
     padding: 2rem;
     border-radius: 15px;
 }
 
-/* Título cursivo */
 h1 {
     font-family: 'Great Vibes', cursive;
     font-size: 2.8rem;
     margin-bottom: 0.5rem;
 }
 
-/*Subtitulos*/
 h2 {
     color: #5c1a38;
 }
 
-/* Subtexto */
 p {
     font-size: 1rem;
     margin-bottom: 1.5rem;
 }
 
-/* Botón */
 button {
     background-color: #f78da7;
     border: none;
@@ -64,7 +63,6 @@ button:hover {
 button span {
     margin-right: 8px;
 }
-
 
 
 
@@ -91,7 +89,6 @@ button span {
 
 
 
-
 /* Sección Recuerdos */
 .recuerdos {
     background-color: #fff0f5;
@@ -106,7 +103,6 @@ button span {
     margin-bottom: 2rem;
 }
 
-/* Grid contenedor */
 .grid-recuerdos {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -115,7 +111,6 @@ button span {
     margin: 0 auto;
 }
 
-/* Recuadro individual */
 .recuadro {
     background-color: #fff;
     border-radius: 15px;
@@ -223,6 +218,7 @@ button span {
 
 
 
+/* Datos curiosos*/
 .datos-curiosos h2 {
     text-align: center;
     margin: 50px 0;
@@ -266,11 +262,12 @@ button:hover {
 
 
 
-/*Dias juntos*/
+/*Tiempo juntos*/
 .tiempo-juntos {
     padding: 60px 20px;
     text-align: center;
-    background: #fff7f9;
+    background: #fff0f5;
+    ;
 }
 
 .tiempo-juntos h2 {
@@ -344,6 +341,101 @@ button:hover {
     .unidad span {
         font-size: 2.1rem;
     }
+}
+
+
+
+/* Cartas de amor */
+.seccion-cartas {
+    background-color: #fff0f5;
+    padding: 60px 20px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    margin-top: 40px;
+}
+
+.titulo-cartas {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.4rem;
+    color: #b30059;
+    margin-bottom: 20px;
+}
+
+.contenedor-cartas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.carta-romantica {
+    width: 260px;
+    height: 120px;
+    background: #ffe3ed;
+    border: 2px solid #f48fb1;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.4s ease;
+    font-family: "Poppins", sans-serif;
+}
+
+.carta-cerrada {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #c2185b;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.carta-abierta {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff9fb;
+    padding: 20px;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: all 0.6s ease;
+    border-radius: 15px;
+}
+
+.carta-romantica.abierta .carta-abierta {
+    top: 0;
+    opacity: 1;
+}
+
+.carta-romantica.abierta .carta-cerrada {
+    opacity: 0;
+}
+
+.carta-abierta p {
+    color: #a60052;
+    font-size: 1rem;
+}
+
+.carta-abierta .esquina {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 25px;
+    height: 25px;
+    background: linear-gradient(135deg, #fff9fb 50%, #f8bbd0 50%);
+    border-radius: 3px;
+    transform: rotate(10deg);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.carta-abierta .esquina:hover {
+    transform: rotate(10deg) scale(1.1);
 }
 
 
@@ -505,6 +597,68 @@ button:hover {
     color: #777;
     font-style: italic;
     margin-top: 10px;
+}
+
+
+
+/* Señor pinguino*/
+.pinguino {
+    position: fixed;
+    width: 70px;
+    height: 70px;
+    opacity: 0;
+    transition: opacity 1s ease, transform 0.3s ease;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.pinguino.visible {
+    opacity: 1;
+}
+
+.pinguino:hover {
+    transform: scale(1.15);
+}
+
+.carta {
+    position: fixed;
+    background: #fff0f6;
+    border: 2px solid #ff8ac2;
+    border-radius: 15px;
+    padding: 15px 20px;
+    color: #b4005f;
+    font-family: "Comic Sans MS", cursive;
+    font-size: 16px;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    z-index: 1001;
+}
+
+.carta.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.carta button.cerrar {
+    display: block;
+    margin: 10px auto 5px;
+    background-color: #ffb6d5;
+    border: none;
+    padding: 4px 10px;
+    border-radius: 8px;
+    color: #5c1a38;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.carta button.cerrar:hover {
+    background-color: #ff8ac2;
+    transform: scale(1.05);
 }
 
 
