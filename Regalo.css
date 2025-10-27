@@ -730,7 +730,7 @@ button:hover {
 
 
 
-/* Fooer */
+/* Footer */
 .footer {
     text-align: center;
     padding: 20px;
@@ -740,4 +740,5 @@ button:hover {
     font-size: 16px;
     border-top: 2px solid #9d04e3;
     margin-top: 40px;
+    margin-bottom: 0;
 }
