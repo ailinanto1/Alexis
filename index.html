@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <audio id="musicaFondo" src="videos/musica.mp3" loop></audio>
     <section class="inicio">
         <div class="contenido">
             <h1>Desde 30-11-2024 hasta el infinito</h1>
@@ -17,91 +18,69 @@
             <button id="boton-corazones">Te amo<span>💖</span></button>
         </div>
     </section>
-    <section class="recuerdos">
+    <section class="recuerdos fade-in">
         <h2>Nuestros Recuerdos</h2>
-
         <div class="grid-recuerdos">
-
-            <!-- Recuerdo 5 -->
             <div class="recuadro">
                 <img src="imagenes/Recuerdo5.jpeg" alt="Recuerdo 5">
                 <p class="fecha">17/11/2024</p>
                 <h3>Nuestros primeros momentos</h3>
                 <p>El comienzo de una linda historia</p>
             </div>
-
-            <!-- recuerdo 1 -->
             <div class="recuadro">
                 <img src="imagenes/Recuerdo1.jpeg" alt="Recuerdo 1">
                 <p class="fecha">27/12/2024</p>
                 <h3>El día de tu cumpleaños</h3>
                 <p>Tu primer cumpleaños juntos</p>
             </div>
-
-            <!-- Recuerdo 6 -->
             <div class="recuadro">
                 <img src="imagenes/Recuerdo6.jpeg" alt="Recuerdo 6">
                 <p class="fecha">11/01/2025</p>
                 <h3>Primer almuerzo en la costa</h3>
                 <p>Disfrutando de comidita a la orilla del agua</p>
             </div>
-
-            <!-- Recuerdo 7 -->
             <div class="recuadro">
                 <img src="imagenes/Recuerdo7.jpeg" alt="Recuerdo 7">
                 <p class="fecha">14/01/2025</p>
                 <h3>Pasando un momento juntos</h3>
                 <p>Junto a nustra hija</p>
             </div>
-
-            <!-- Recuerdo 8 -->
             <div class="recuadro">
                 <img src="imagenes/Recuerdo8.jpeg" alt="Recuerdo 8">
                 <p class="fecha">13/03/2025</p>
                 <h3>Un cumpleaños diferente</h3>
                 <p>Mi primer cumpleaños a tu lado</p>
             </div>
-
-
-            <!-- Recuerdo 2 -->
             <div class="recuadro">
                 <img src="imagenes/Recuerdo2.jpeg" alt="Recuerdo 2">
                 <p class="fecha">16/03/2025</p>
                 <h3>Nuestra primera salida juntos</h3>
                 <p>Una noche inolvidable</p>
             </div>
-
-            <!-- Recuerdo 3 -->
             <div class="recuadro">
                 <img src="imagenes/Recuerdo3.jpeg" alt="Recuerdo 3">
                 <p class="fecha">24/04/2025</p>
                 <h3>Un día más a tu lado</h3>
                 <p>Cuando me seguías enamorando</p>
             </div>
-
-            <!-- Recuerdo 10 -->
             <div class="recuadro">
                 <img src="imagenes/Recuerdo10.jpeg" alt="Recuerdo 10">
                 <p class="fecha">13/07/2025</p>
                 <h3>Caminata en San Javier</h3>
                 <p>Conociendo a mi familia</p>
             </div>
-
-            <!-- Recuerdo 4 -->
             <div class="recuadro">
                 <img src="imagenes/Recuerdo4.jpeg" alt="Recuerdo 4">
                 <p class="fecha">18/07/2025</p>
                 <h3>La mejor salida</h3>
                 <p>Una juntada llena de risas y complicidad</p>
             </div>
-
             <div class="recuadro">
                 <img src="imagenes/septiembre1.jpeg" alt="Recuerdo 4">
                 <p class="fecha">12/09/2025</p>
                 <h3>Nuestro primer viaje juntos</h3>
                 <p>y los que faltan </p>
             </div>
-
             <div class="recuadro">
                 <img src="imagenes/Recuerdo11.jpeg" alt="Recuerdo 4">
                 <p class="fecha">20/09/2025</p>
@@ -122,9 +101,8 @@
             </div>
         </div>
     </section>
-    <section id="meses">
+    <section id="meses" class="fade-in">
         <h2>Mes a Mes</h2>
-
         <div class="botones-mes">
             <button class="mes-btn active" data-mes="noviembre">Noviembre</button>
             <button class="mes-btn" data-mes="diciembre">Diciembre</button>
@@ -151,14 +129,12 @@
                 </video>
             </div>
         </div>
-
         <div class="galeria-mes" id="galeria-diciembre" style="display:none;">
             <div class="card"><img src="imagenes/dic1.jpeg" alt="Recuerdo diciembre 1"></div>
             <div class="card"><img src="imagenes/dic2.jpeg" alt="Recuerdo diciembre 2"></div>
             <div class="card"><img src="imagenes/dic3.jpeg" alt="Recuerdo diciembre 3"></div>
             <div class="card"><img src="imagenes/dic4.jpeg" alt="Recuerdo diciembre 4"></div>
             <div class="card"><img src="imagenes/dic5.jpeg" alt="Recuerdo diciembre 5"></div>
-
             <div class="card">
                 <video controls width="500">
                     <source src="videos/video_diciembre.mp4" type="video/mp4">
@@ -166,7 +142,6 @@
                 </video>
             </div>
         </div>
-
         <div class="galeria-mes" id="galeria-enero" style="display:none;">
             <div class="card"><img src="imagenes/Recuerdo6.jpeg" alt="Recuerdo enero 1"></div>
             <div class="card"><img src="imagenes/enero1.jpeg" alt="Recuerdo enero 2"></div>
@@ -195,12 +170,10 @@
                 </video>
             </div>
         </div>
-
         <div class="galeria-mes" id="galeria-febrero" style="display:none;">
             <div class="card"><img src="imagenes/febrero1.jpeg" alt="Recuerdo febrero 1"></div>
             <div class="card"><img src="imagenes/febrero2.jpeg" alt="Recuerdo febrero 2"></div>
         </div>
-
         <div class="galeria-mes" id="galeria-marzo" style="display:none;">
             <div class="card"><img src="imagenes/marzo1.jpeg" alt="Recuerdo marzo 1"></div>
             <div class="card"><img src="imagenes/marzo2.jpeg" alt="Recuerdo marzo 2"></div>
@@ -209,14 +182,12 @@
             <div class="card"><img src="imagenes/marzo5.jpeg" alt="Recuerdo marzo 5"></div>
             <div class="card"><img src="imagenes/marzo6.jpeg" alt="Recuerdo marzo 6"></div>
         </div>
-
         <div class="galeria-mes" id="galeria-abril" style="display:none;">
             <div class="card"><img src="imagenes/abril1.jpeg" alt="Recuerdo abril 1"></div>
             <div class="card"><img src="imagenes/abril2.jpeg" alt="Recuerdo abril 2"></div>
             <div class="card"><img src="imagenes/abril3.jpeg" alt="Recuerdo abril 3"></div>
             <div class="card"><img src="imagenes/abril4.jpeg" alt="Recuerdo abril 4"></div>
         </div>
-
         <div class="galeria-mes" id="galeria-mayo" style="display:none;">
             <div class="card"><img src="imagenes/mayo1.jpeg" alt="Recuerdo mayo 1"></div>
             <div class="card">
@@ -226,16 +197,13 @@
                 </video>
             </div>
         </div>
-
         <div class="galeria-mes" id="galeria-junio" style="display:none;">
         </div>
-
         <div class="galeria-mes" id="galeria-julio" style="display:none;">
             <div class="card"><img src="imagenes/Recuerdo10.jpeg" alt="Recuerdo julio 1"></div>
             <div class="card"><img src="imagenes/julio1.jpeg" alt="Recuerdo julio 2"></div>
             <div class="card"><img src="imagenes/julio2.jpeg" alt="Recuerdo julio 3"></div>
         </div>
-
         <div class="galeria-mes" id="galeria-agosto" style="display:none;">
             <div class="card"><img src="imagenes/agosto1.jpeg" alt="Recuerdo agosto 1"></div>
             <div class="card"><img src="imagenes/agosto2.jpeg" alt="Recuerdo agosto 2"></div>
@@ -278,26 +246,21 @@
             </div>
         </div>
     </section>
-    <section class="datos-curiosos">
+    <section class="datos-curiosos fade-in">
         <h2>Datos Curiosos de Alexis</h2>
-
         <div class="carrusel">
             <button id="prev">❮</button>
-
             <div id="dato" class="dato">
                 Helado favorito: Menta granizada
             </div>
-
             <button id="next">❯</button>
         </div>
     </section>
-    <section class="tiempo-juntos" id="tiempo">
+    <section class="tiempo-juntos fade-in" id="tiempo">
         <h2>Tiempo Juntos Como Novios</h2>
-
         <div class="panel-tiempo">
             <div class="icono-corazon">❤️</div>
             <p class="desde">Desde el <strong>30 de noviembre de 2024</strong> a las <strong>5:00 PM</strong></p>
-
             <div class="reloj">
                 <div class="unidad">
                     <span id="dias">0</span>
@@ -319,7 +282,7 @@
             <p class="frase">“Cada segundo a tu lado me hace feliz”.</p>
         </div>
     </section>
-    <section class="seccion-cartas">
+    <section class="seccion-cartas fade-in">
         <h2 class="titulo-cartas">Cosas que siempre quise decirte</h2>
         <div class="contenedor-cartas">
             <div class="carta-romantica">
@@ -331,7 +294,6 @@
                     <span class="esquina"></span>
                 </div>
             </div>
-
             <div class="carta-romantica">
                 <div class="carta-cerrada">💌 Apretame</div>
                 <div class="carta-abierta">
@@ -341,7 +303,6 @@
                     <span class="esquina"></span>
                 </div>
             </div>
-
             <div class="carta-romantica">
                 <div class="carta-cerrada">💌 Apretame</div>
                 <div class="carta-abierta">
@@ -353,30 +314,34 @@
             </div>
         </div>
     </section>
-
-    <section class="objetivos-section">
+    <section class="objetivos-section fade-in">
         <h2 class="titulo-seccion">Nuestros Objetivos</h2>
         <div class="objetivos-container" id="objetivos-container"></div>
     </section>
-    <section class="playlist-section" id="playlist-juntos">
+    <section class="playlist-section fade-in" id="playlist-juntos">
         <h2 class="titulo-seccion">Nuestra Playlist</h2>
-
         <div class="playlist-card">
             <div class="playlist-embed" id="playlist-embed"></div>
-
             <div class="playlist-controls">
                 <button class="playlist-btn" id="pl-prev" aria-label="anterior">‹</button>
                 <span class="playlist-title" id="playlist-title">—</span>
                 <button class="playlist-btn" id="pl-next" aria-label="siguiente">›</button>
             </div>
-
             <div class="playlist-pills" id="playlist-pills"></div>
         </div>
-
         <p class="playlist-tip">
             Cada canción que nos recuerda a nosotros
         </p>
     </section>
+    <section class="pinguino-container fade-in">
+        <div class="pinguino">
+            <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Pingüino enamorado" />
+            <div class="mensaje-pinguino"></div>
+        </div>
+    </section>
+    <footer class="footer">
+        <p>Hecho con 💖 por Ailín para Alexis 🌙</p>
+    </footer>
     <script src="regalo.js"></script>
 </body>
 

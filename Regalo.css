@@ -2,7 +2,6 @@ body {
     background-color: #fff0f5;
 }
 
-/* Fondo de pantalla completa con imagen */
 body,
 html {
     margin: 0;
@@ -601,64 +600,79 @@ button:hover {
 
 
 
-/* Señor pinguino*/
+/* 🐧 Pingüino enamorado */
 .pinguino {
     position: fixed;
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: auto;
     opacity: 0;
-    transition: opacity 1s ease, transform 0.3s ease;
-    cursor: pointer;
-    z-index: 1000;
+    transform: scale(0.9);
+    transition: transform 0.8s ease, opacity 0.8s ease, left 1s ease, right 1s ease;
+    z-index: 900;
 }
 
 .pinguino.visible {
     opacity: 1;
+    transform: scale(1) rotate(0deg);
 }
 
-.pinguino:hover {
-    transform: scale(1.15);
+.pinguino.izquierda {
+    left: 50px;
+    animation: balanceo 3s infinite ease-in-out;
 }
 
-.carta {
+.pinguino.derecha {
+    right: 50px;
+    animation: balanceo 3s infinite ease-in-out;
+}
+
+/* Animación de balanceo */
+@keyframes balanceo {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(-3deg);
+    }
+
+    50% {
+        transform: translateY(-8px) rotate(3deg);
+    }
+}
+
+/* Mensaje del pingüino */
+.mensaje-pinguino {
     position: fixed;
-    background: #fff0f6;
-    border: 2px solid #ff8ac2;
-    border-radius: 15px;
-    padding: 15px 20px;
-    color: #b4005f;
-    font-family: "Comic Sans MS", cursive;
-    font-size: 16px;
-    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 240, 245, 0.9);
+    color: #6a1b9a;
+    padding: 10px 14px;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     opacity: 0;
-    transform: scale(0.9);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-    z-index: 1001;
+    transform: translateY(10px);
+    font-size: 14px;
+    font-family: "Poppins", sans-serif;
+    z-index: 950;
+    transition: all 0.8s ease;
 }
 
-.carta.visible {
+.mensaje-pinguino.visible {
     opacity: 1;
-    transform: scale(1);
+    transform: translateY(0);
 }
 
-.carta button.cerrar {
-    display: block;
-    margin: 10px auto 5px;
-    background-color: #ffb6d5;
-    border: none;
-    padding: 4px 10px;
-    border-radius: 8px;
-    color: #5c1a38;
-    font-size: 0.85rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+
+
+/* Animación de scroll */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
 }
 
-.carta button.cerrar:hover {
-    background-color: #ff8ac2;
-    transform: scale(1.05);
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 
@@ -712,4 +726,18 @@ button:hover {
         font-size: 1.3em;
         text-align: center;
     }
+}
+
+
+
+/* Fooer */
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #e1a6ff;
+    color: #720089;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    border-top: 2px solid #9d04e3;
+    margin-top: 40px;
 }

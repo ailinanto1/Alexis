@@ -7,23 +7,19 @@ function crearCorazon() {
   corazon.style.animationDuration = Math.random() * 2 + 3 + "s";
   document.body.appendChild(corazon);
 
-  // Eliminar cada corazón después de 5 segundos
   setTimeout(() => {
     corazon.remove();
   }, 5000);
 }
 
 function mostrarCorazones() {
-  // Crear corazones cada 200ms durante 5 segundos
   const intervalo = setInterval(crearCorazon, 200);
 
-  // Detener después de 5 segundos
   setTimeout(() => {
     clearInterval(intervalo);
   }, 5000);
 }
 
-// Esperar a que el DOM esté listo
 document.addEventListener("DOMContentLoaded", () => {
   const boton = document.querySelector("#boton-corazones");
   if (boton) {
@@ -31,6 +27,35 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+
+// Música
+document.addEventListener("DOMContentLoaded", () => {
+  const musica = document.getElementById("musicaFondo");
+  const botonMusica = document.getElementById("toggleMusica");
+
+  const iniciarMusica = () => {
+    musica.play().then(() => {
+      console.log("🎶 Música iniciada");
+    }).catch(err => {
+      console.warn("Autoplay bloqueado, se reproducirá al tocar algo.");
+    });
+    document.removeEventListener("click", iniciarMusica);
+    document.removeEventListener("touchstart", iniciarMusica);
+  };
+
+  document.addEventListener("click", iniciarMusica);
+  document.addEventListener("touchstart", iniciarMusica);
+
+  botonMusica.addEventListener("click", () => {
+    if (musica.paused) {
+      musica.play();
+      botonMusica.textContent = "🔊";
+    } else {
+      musica.pause();
+      botonMusica.textContent = "🔈";
+    }
+  });
+});
 
 
 
@@ -110,16 +135,14 @@ document.getElementById("prev").addEventListener("click", () => {
 });
 
 function cambiarDato(direccion) {
-  // animación de salida
   datoDiv.style.opacity = 0;
 
   setTimeout(() => {
     indice = (indice + direccion + datos.length) % datos.length;
     datoDiv.textContent = datos[indice];
 
-    // animación de entrada
     datoDiv.style.opacity = 1;
-  }, 300); // tiempo de la animación
+  }, 300);
 }
 
 
@@ -154,7 +177,6 @@ function actualizarContador() {
   $segundos.textContent = dosDigitos(segundos);
 }
 
-// Arranca y actualiza cada segundo
 actualizarContador();
 setInterval(actualizarContador, 1000);
 
@@ -164,7 +186,6 @@ setInterval(actualizarContador, 1000);
 document.addEventListener("DOMContentLoaded", () => {
   const cartas = document.querySelectorAll(".carta-romantica");
 
-  // Sonidos
   const sonidoAbrir = new Audio("https://cdn.pixabay.com/download/audio/2023/03/07/audio_37cf2e1a4c.mp3?filename=paper-open.mp3");
   const sonidoCerrar = new Audio("https://cdn.pixabay.com/download/audio/2022/10/16/audio_3b1f7a46e1.mp3?filename=page-flip-1.mp3");
 
@@ -317,84 +338,89 @@ renderTrack(current);
 
 
 
-/* Señor pinguino */
-const mensajes = [
-  "Eres mi persona favorita",
-  "Pingüino dice: te amo mucho",
-  "Tu amor me derrite más que el sol",
-  "Estar contigo es mi lugar feliz",
-  "Te amo cara de confite",
-  "Tus abrazos me dan paz",
-  "Siempre serás mi pingüino",
-  "Gracias por existir en mi vida"
-];
-
+// Pinguino enamorado <3
 let puedeAparecer = true;
 
-// Crea un pingüino en una posición aleatoria
+const mensajes = [
+  "Prometo seguir eligiéndote todos los días",
+  "Te amo con todo lo que soy",
+  "Quiero mi besito :(",
+  "Sos mi persona favorita en el mundo <3",
+  "Tu sonrisa es mi lugar feliz",
+  "Desde que te conocí, no hay ojos mas bellos que los tuyos"
+];
+
 function crearPinguino() {
   if (!puedeAparecer) return;
 
   puedeAparecer = false;
 
   const pinguino = document.createElement("img");
-  pinguino.src = "imagenes/pinguinos.png";
+  pinguino.src = "imagenes/pinguin.png"; 
   pinguino.alt = "Pingüino";
   pinguino.classList.add("pinguino");
 
-  // Posición aleatoria en pantalla
-  const x = Math.random() * (window.innerWidth - 80);
-  const y = Math.random() * (window.innerHeight - 80);
-  pinguino.style.left = `${x}px`;
+  // Posición aleatoria (izquierda o derecha)
+  const lado = Math.random() < 0.5 ? "izquierda" : "derecha";
+  const y = Math.random() * (window.innerHeight - 100);
+
+  if (lado === "izquierda") {
+    pinguino.style.left = "-80px";
+  } else {
+    pinguino.style.right = "-80px";
+  }
   pinguino.style.top = `${y}px`;
 
   document.body.appendChild(pinguino);
 
-  // Efecto de aparición
+  // Aparece con animación
   setTimeout(() => {
-    pinguino.classList.add("visible");
+    pinguino.classList.add("visible", lado);
   }, 100);
 
-  // Click → muestra carta
-  pinguino.addEventListener("click", () => mostrarCarta(pinguino));
-}
-
-// Muestra la carta con mensaje
-function mostrarCarta(pinguino) {
-  const carta = document.createElement("div");
-  carta.classList.add("carta");
-
+  // Mostrar mensaje
   const mensaje = mensajes[Math.floor(Math.random() * mensajes.length)];
-  carta.innerHTML = `
-    <p>${mensaje}</p>
-    <button class="cerrar">Cerrar 💌</button>
-  `;
+  const mensajeDiv = document.createElement("div");
+  mensajeDiv.classList.add("mensaje-pinguino");
+  mensajeDiv.textContent = mensaje;
 
-  carta.style.left = `${pinguino.offsetLeft}px`;
-  carta.style.top = `${pinguino.offsetTop - 90}px`;
+  document.body.appendChild(mensajeDiv);
 
-  document.body.appendChild(carta);
-
-  // Animación de entrada
+  // Posiciona el mensaje cerca del pingüino
   setTimeout(() => {
-    carta.classList.add("visible");
-  }, 100);
+    const rect = pinguino.getBoundingClientRect();
+    mensajeDiv.style.left = `${rect.left + 60}px`;
+    mensajeDiv.style.top = `${rect.top - 30}px`;
+    mensajeDiv.classList.add("visible");
+  }, 1200);
 
-  // Cerrar carta
-  carta.querySelector(".cerrar").addEventListener("click", () => {
-    carta.classList.remove("visible");
+  // Desaparece luego de unos segundos
+  setTimeout(() => {
     pinguino.classList.remove("visible");
+    mensajeDiv.classList.remove("visible");
     setTimeout(() => {
-      carta.remove();
       pinguino.remove();
-      // Reaparece otro pingüino después de 90 segundos
-      setTimeout(() => {
-        puedeAparecer = true;
-        crearPinguino();
-      }, 90000);
-    }, 800); // tiempo para animación suave
-  });
+      mensajeDiv.remove();
+      puedeAparecer = true;
+      setTimeout(crearPinguino, 15000); // reaparece cada 15 segundos
+    }, 1000);
+  }, 7000);
 }
 
-// Aparece el primer pingüino
+// Inicia automáticamente después de 3 segundos
 setTimeout(crearPinguino, 3000);
+
+
+
+
+
+// Animación de scroll
+const secciones = document.querySelectorAll('.fade-in');
+window.addEventListener('scroll', () => {
+  secciones.forEach(sec => {
+    const rect = sec.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 100) {
+      sec.classList.add('visible');
+    }
+  });
+});
