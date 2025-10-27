@@ -360,7 +360,6 @@ function crearPinguino() {
   pinguino.alt = "Pingüino";
   pinguino.classList.add("pinguino");
 
-  // Posición aleatoria (izquierda o derecha)
   const lado = Math.random() < 0.5 ? "izquierda" : "derecha";
   const y = Math.random() * (window.innerHeight - 100);
 
@@ -373,12 +372,10 @@ function crearPinguino() {
 
   document.body.appendChild(pinguino);
 
-  // Aparece con animación
   setTimeout(() => {
     pinguino.classList.add("visible", lado);
   }, 100);
 
-  // Mostrar mensaje
   const mensaje = mensajes[Math.floor(Math.random() * mensajes.length)];
   const mensajeDiv = document.createElement("div");
   mensajeDiv.classList.add("mensaje-pinguino");
@@ -386,7 +383,6 @@ function crearPinguino() {
 
   document.body.appendChild(mensajeDiv);
 
-  // Posiciona el mensaje cerca del pingüino
   setTimeout(() => {
     const rect = pinguino.getBoundingClientRect();
     mensajeDiv.style.left = `${rect.left + 60}px`;
@@ -394,7 +390,6 @@ function crearPinguino() {
     mensajeDiv.classList.add("visible");
   }, 1200);
 
-  // Desaparece luego de unos segundos
   setTimeout(() => {
     pinguino.classList.remove("visible");
     mensajeDiv.classList.remove("visible");
@@ -402,12 +397,11 @@ function crearPinguino() {
       pinguino.remove();
       mensajeDiv.remove();
       puedeAparecer = true;
-      setTimeout(crearPinguino, 15000); // reaparece cada 15 segundos
+      setTimeout(crearPinguino, 15000); 
     }, 1000);
   }, 7000);
 }
 
-// Inicia automáticamente después de 3 segundos
 setTimeout(crearPinguino, 3000);
 
 
