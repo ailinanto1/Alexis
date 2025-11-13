@@ -607,42 +607,82 @@ button:hover {
     height: auto;
     opacity: 0;
     transform: scale(0.9);
-    transition: transform 0.8s ease, opacity 0.8s ease, left 1s ease, right 1s ease;
     z-index: 900;
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .pinguino.visible {
     opacity: 1;
-    transform: scale(1) rotate(0deg);
+    transform: scale(1);
 }
 
-.pinguino.izquierda {
-    left: 50px;
-    animation: balanceo 3s infinite ease-in-out;
+.pinguino.entrar-izquierda {
+    animation: entrarIzquierda 2s ease-out forwards;
 }
 
-.pinguino.derecha {
-    right: 50px;
-    animation: balanceo 3s infinite ease-in-out;
-}
+@keyframes entrarIzquierda {
+    0% {
+        left: -100px;
+        opacity: 0;
+    }
 
-/* Animación de balanceo */
-@keyframes balanceo {
-
-    0%,
     100% {
-        transform: translateY(0) rotate(-3deg);
-    }
-
-    50% {
-        transform: translateY(-8px) rotate(3deg);
+        left: 30px;
+        opacity: 1;
     }
 }
 
-/* Mensaje del pingüino */
+.pinguino.entrar-derecha {
+    animation: entrarDerecha 2s ease-out forwards;
+}
+
+@keyframes entrarDerecha {
+    0% {
+        right: -100px;
+        opacity: 0;
+    }
+
+    100% {
+        right: 30px;
+        opacity: 1;
+    }
+}
+
+.pinguino.salir-izquierda {
+    animation: salirIzquierda 2s ease-in forwards;
+}
+
+@keyframes salirIzquierda {
+    0% {
+        left: 30px;
+        opacity: 1;
+    }
+
+    100% {
+        left: -100px;
+        opacity: 0;
+    }
+}
+
+.pinguino.salir-derecha {
+    animation: salirDerecha 2s ease-in forwards;
+}
+
+@keyframes salirDerecha {
+    0% {
+        right: 30px;
+        opacity: 1;
+    }
+
+    100% {
+        right: -100px;
+        opacity: 0;
+    }
+}
+
 .mensaje-pinguino {
     position: fixed;
-    background: rgba(255, 240, 245, 0.9);
+    background: rgba(255, 240, 245, 0.95);
     color: #6a1b9a;
     padding: 10px 14px;
     border-radius: 20px;
@@ -659,7 +699,6 @@ button:hover {
     opacity: 1;
     transform: translateY(0);
 }
-
 
 
 

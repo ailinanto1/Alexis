@@ -218,7 +218,6 @@ const objetivos = [
   "Vivir juntos",
   "Hacer un picnic en la plaza o costa",
   "Conocer a la familia del otro",
-  "Tener una mascota",
   "Ir al cine",
   "Escribir un diario",
   "Cumplir un aniversario especial",
@@ -237,7 +236,7 @@ const objetivos = [
   "Visitar a la familia lejana",
   "Recrear nuestra primera cita",
   "Hacer una escapada de fin de semana",
-  "Cocinar una comida especial",
+  "Hacer una comida especial",
   "Hacer un desayuno en la cama",
   "Hacer un día de compras",
   "Ir a la playa",
@@ -299,10 +298,11 @@ objetivos.forEach((texto, index) => {
 const PLAYLIST_KEY = 'playlistIndex';
 
 const tracks = [
-  { type: 'spotify', id: '/6l0ClSGxF3VwZIvxseYERY', title: 'Nuestras canciones' },
-  { type: 'spotify', id: '4u5xLMRN0dgKBFFN8FiNgv', title: 'Nuestras canciones' },
-  { type: 'spotify', id: '2L2o3dwHpLIVtpCDy1uBD4', title: 'Nuestras canciones' },
-  { type: 'spotify', id: '3ydweVPwq9PCEVJ8WwqT6u', title: 'Nuestras canciones' },
+  { type: 'spotify', id: '6l0ClSGxF3VwZIvxseYERY', title: 'Nuestras canciones' }, // No te imaginas
+  { type: 'spotify', id: '4u5xLMRN0dgKBFFN8FiNgv', title: 'Nuestras canciones' }, // Mi niña bonita (no funciona)
+  { type: 'spotify', id: '2L2o3dwHpLIVtpCDy1uBD4', title: 'Nuestras canciones' }, // Lo nuestro tiene magia
+  { type: 'spotify', id: '3ydweVPwq9PCEVJ8WwqT6u', title: 'Nuestras canciones' }, // Loco (no funciona)
+  { type: 'spotify', id: '2w1rgt3mIKrEGsEMalyIqy', title: 'Nuestras canciones'} //rompecabezas de amor
 ];
 
 const embed = document.getElementById('playlist-embed');
@@ -355,70 +355,106 @@ renderTrack(current);
 // Pinguino enamorado <3
 let puedeAparecer = true;
 
-const mensajes = [
-  "Prometo seguir eligiéndote todos los días",
-  "Te amo con todo lo que soy",
-  "Quiero mi besito :(",
-  "Sos mi persona favorita en el mundo <3",
-  "Tu sonrisa es mi lugar feliz",
-  "Desde que te conocí, no hay ojos mas bellos que los tuyos"
-];
-
 function crearPinguino() {
   if (!puedeAparecer) return;
-
   puedeAparecer = false;
 
   const pinguino = document.createElement("img");
-  pinguino.src = "imagenes/pinguin.png"; 
+  pinguino.src = "imagenes/pinguin.png";
   pinguino.alt = "Pingüino";
   pinguino.classList.add("pinguino");
 
   const lado = Math.random() < 0.5 ? "izquierda" : "derecha";
-  const y = Math.random() * (window.innerHeight - 100);
+  const pinguinoAltura = 80;
+  const margenSuperior = 20;
+  const margenInferior = window.innerHeight - pinguinoAltura - 40;
+
+  const y = Math.random() * (margenInferior - margenSuperior) + margenSuperior;
+
+  const scrollY = window.scrollY;
+  pinguino.style.top = `${scrollY + y}px`;
 
   if (lado === "izquierda") {
-    pinguino.style.left = "-80px";
+    pinguino.style.left = "-100px";
   } else {
-    pinguino.style.right = "-80px";
+    pinguino.style.right = "-100px";
   }
-  pinguino.style.top = `${y}px`;
 
   document.body.appendChild(pinguino);
 
-  setTimeout(() => {
-    pinguino.classList.add("visible", lado);
-  }, 100);
+  const animacionEntrada = lado === "izquierda" ? "entrar-izquierda" : "entrar-derecha";
+  const animacionSalida = lado === "izquierda" ? "salir-izquierda" : "salir-derecha";
+  pinguino.classList.add(animacionEntrada);
+
+  const mensajes = [
+    "Prometo seguir eligiéndote todos los días 💞",
+    "Te amo con todo lo que soy 💫",
+    "Quiero mi besito 😚",
+    "Sos mi persona favorita en el mundo <3",
+    "Tu sonrisa es mi lugar feliz 🌸",
+    "Desde que te conocí, no hay ojos más bellos que los tuyos 💕",
+    "Me hacés feliz sin siquiera intentarlo 💖",
+    "No necesito nada más si estás conmigo 💋",
+    "Cada día a tu lado vale la pena 💐",
+    "Sos mi pensamiento favorito del día 💭",
+    "Tu risa es mi canción preferida 🎶",
+    "Si estoy contigo, todo está más que bien 💗",
+    "Te elijo en todas mis vidas ✨",
+    "Sos el abrazo que más necesito 🤗",
+    "No hay distancia que apague lo que siento 💌",
+    "Mi corazón sonríe cuando pienso en vos 💓",
+    "Quisiera congelar el tiempo cuando te abrazo 🕰️",
+    "Sos mi rayito de sol en los días fríos ☀️",
+    "No sabía lo que era el amor hasta que te conocí 💞",
+    "Tu mirada me desarma cada vez 😍",
+    "Sos mi casa, mi paz y mi alegría 🏡",
+    "Amarte es mi parte favorita del día 💕",
+    "Sos el pingüino de mi corazón 🐧💘",
+    "Contigo todo tiene más color 🎨",
+    "Gracias por existir y hacerme tan feliz 💝",
+    "Si pudiera, te elegiría mil veces más 💫",
+    "Sos el motivo de mi sonrisa tonta 😌",
+    "Nunca dejes de ser mi razón para sonreír 💖",
+    "El mundo es más bonito cuando estás cerca 🌎💞",
+    "Te pienso, te extraño y te amo, todo al mismo tiempo 💋",
+    "Sos mi mejor historia 💕",
+    "Cada 'te amo' se queda corto contigo ❤️",
+    "Sos mi suerte, mi calma y mi locura 🧸",
+    "Con vos, los días grises se vuelven rosados 🌸",
+    "Tu amor es mi lugar favorito del mundo 💗",
+    "Solo vos lográs que mi corazón baile 🩷",
+    "Sos mi persona, sin dudas 💫"
+  ];
 
   const mensaje = mensajes[Math.floor(Math.random() * mensajes.length)];
   const mensajeDiv = document.createElement("div");
   mensajeDiv.classList.add("mensaje-pinguino");
   mensajeDiv.textContent = mensaje;
-
   document.body.appendChild(mensajeDiv);
 
   setTimeout(() => {
     const rect = pinguino.getBoundingClientRect();
-    mensajeDiv.style.left = `${rect.left + 60}px`;
-    mensajeDiv.style.top = `${rect.top - 30}px`;
+    mensajeDiv.style.left = `${lado === "izquierda" ? rect.left + 90 : rect.left - 160}px`;
+    mensajeDiv.style.top = `${scrollY + rect.top - 10}px`;
     mensajeDiv.classList.add("visible");
-  }, 1200);
+  }, 2000);
 
   setTimeout(() => {
-    pinguino.classList.remove("visible");
     mensajeDiv.classList.remove("visible");
+    pinguino.classList.remove(animacionEntrada);
+    pinguino.classList.add(animacionSalida);
+
     setTimeout(() => {
       pinguino.remove();
       mensajeDiv.remove();
       puedeAparecer = true;
       setTimeout(crearPinguino, 15000); 
-    }, 1000);
+    }, 2000);
   }, 7000);
 }
-
-setTimeout(crearPinguino, 3000);
-
-
+window.addEventListener("load", () => {
+  setTimeout(crearPinguino, 3000);
+});
 
 
 
